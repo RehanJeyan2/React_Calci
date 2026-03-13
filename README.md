@@ -1,5 +1,5 @@
 # Ex04 Simple Calculator - React Project
-## Date:
+## Date:13/3/2026
 
 ## AIM
 To  develop a Simple Calculator using React.js with clean and responsive design, ensuring a smooth user experience across different screen sizes.
@@ -46,10 +46,85 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
+```
+## index.js
 
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import Calculator from "./Calculator";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+  <React.StrictMode>
+    <Calculator />
+  </React.StrictMode>
+);
+
+```
+```
+## calculator.js
+
+import React, { useState } from "react";
+import "./Calculator.css";
+
+const Calculator = () => {
+  const [input, setInput] = useState("");
+
+  const handleClick = (value) => {
+    setInput(input + value);
+  };
+
+  const handleClear = () => {
+    setInput("");
+  };
+
+  const handleCalculate = () => {
+    try {
+      setInput(eval(input).toString());
+    } catch {
+      setInput("Error");
+    }
+  };
+
+  return (
+    <div className="calculator">
+      <h2>Simple React Calculator</h2>
+
+      <input type="text" value={input} readOnly />
+
+      <div className="buttons">
+        <button onClick={() => handleClick("1")}>1</button>
+        <button onClick={() => handleClick("2")}>2</button>
+        <button onClick={() => handleClick("3")}>3</button>
+        <button onClick={() => handleClick("+")}>+</button>
+
+        <button onClick={() => handleClick("4")}>4</button>
+        <button onClick={() => handleClick("5")}>5</button>
+        <button onClick={() => handleClick("6")}>6</button>
+        <button onClick={() => handleClick("-")}>-</button>
+
+        <button onClick={() => handleClick("7")}>7</button>
+        <button onClick={() => handleClick("8")}>8</button>
+        <button onClick={() => handleClick("9")}>9</button>
+        <button onClick={() => handleClick("*")}>*</button>
+
+        <button onClick={handleClear}>C</button>
+        <button onClick={() => handleClick("0")}>0</button>
+        <button onClick={handleCalculate}>=</button>
+        <button onClick={() => handleClick("/")}>/</button>
+      </div>
+    </div>
+  );
+};
+
+export default Calculator;
+
+```
 
 ## OUTPUT
-
+![alt text](<Screenshot 2026-03-11 154610.png>)
 
 ## RESULT
 The program for developing a simple calculator in React.js is executed successfully.
